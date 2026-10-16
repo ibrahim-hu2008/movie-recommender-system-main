@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <title>Login Page</title>
+
+  <style>
+    body {
+        margin: 0;
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+    }
+
+    .background {
+        background-image: url('static/images/collage.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        margin: 0;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 10px;
+    }
+
+    .centre-container {
+        background-color: rgba(11, 13, 21, 0.85);
+        width: 900px;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .logo {
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+        display: inline-block;
+        background-image: url('static/images/asfc-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        left: 20px;
+    }
+
+    .sign-in-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .sign-in-div {
+        width: 550px;
+        height: 160px;
+        border: 2px solid white;
+        margin-left: 220px;
+    }
+
+    .identity-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: left;
+        gap: 2rem;
+        position: relative;
+    }
+
+    .identity {
+        font-size: 24px;
+        color: white;
+        margin-left: 10px;
+        margin-top: 1px;
+        padding: 10px;
+
+    }
+
+    .sign-in-button {
+        height: 30px;
+        width: 90px;
+        color: white;
+        border-style: solid;
+        border-color: rgb(84,121,255);
+        background-color: rgb(84,121,255);
+        border-radius: 3px;
+        font-size: 14px;
+        cursor: pointer;
+        display: inline-block;
+        position: absolute;
+        margin-top: 50px;
+        margin-left: 20px;
+        transition: background-color 0.2s;
+        text-decoration: none;
+        text-align: center;
+        line-height: 2.2;
+    }
+
+    .sign-in-button:hover {
+        background-color: rgb(44, 88, 248);
+    }
+
+    .sign-in-button:active {
+        opacity: 0.7;
+    }
+
+  </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="wrapper">
+            <div class="centre-container">
+                <div class="logo">
+                </div>
+                <div class="sign-in-wrapper">
+                    <div class="sign-in-div">
+                        <div class="identity-wrapper"> 
+                        <p class="identity">
+                            I'm a <span style="color: rgb(84,121,255); font-weight: 700;">Teacher</p>
+                        </p>
+                        <a href="/teacher-login" class="sign-in-button">Sign In</a>
+                        </div>
+                    </div>
+
+                    <div class="sign-in-div">
+                        <div class="identity-wrapper">
+                        <p class="identity">
+                            I'm a <span style="color: rgb(84,121,255); font-weight: 700;">Student</p>
+                        </p>
+                        <a href="/student-login" class="sign-in-button">Sign In</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

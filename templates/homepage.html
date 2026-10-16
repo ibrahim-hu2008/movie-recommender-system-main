@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/345d4d2f08.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <title>Login Page</title>
+
+  <style>
+     body {
+        margin: 0;
+        height: 100%;
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+        color: white;
+        background-image: url('{{ url_for('static', filename='images/background.png') }}');
+        background-size: cover;
+        background-attachment: fixed; 
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 1000px;
+        padding-top: 140px;
+    }
+
+    .nav-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .navigation-div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 106px;
+        background-color: transparent;
+        position: fixed;  /* changed from sticky */
+        z-index: 1001; /* slightly higher than the color block */
+    }
+
+    .color-block {
+        height: 115px;
+        width: 100%;
+        background-color: #16162b;
+        position: fixed;
+    }
+
+    .navigation-div a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-left: 40px;
+        height: 20px;
+        transition: all 0.2s;
+        z-index: 1002;
+    }
+
+    .navigation-div a:hover {
+        background-color: rgba(84,121,255, 0.3);
+        border-radius: 7px;
+    }
+
+    .navigation-div a:active {
+        opacity: 0.7;
+    }
+
+    .welcome-div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 80px;
+    }
+
+    .welcome {
+        font-size: 28px;
+        color: white;
+        margin-left: 10px;
+        margin-top: 17px;
+        padding: 0;
+    }
+
+    .profile {
+        width: 70px;
+        height: 70px;
+        filter: invert(100%);
+    }
+
+    .logo {
+        width: 70px;
+        height: 75px;
+        padding: 10px 10px;
+        background-image: url('static/images/asfc-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+     .profile-icon {
+        width: 60px;
+        height: 60px;
+        margin-top: 10px;
+        margin-left: 250px;
+        padding: 10px 10px;
+        background-image: url('static/images/profile-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+        cursor: pointer;
+    }
+
+    .profile-icon:hover {
+        filter: invert(0%);
+        background-color: rgb(84, 121, 255);
+        border-radius: 10px;
+    }
+
+    .profile-icon:active {
+        opacity: 0.7;
+    }
+
+    .search-icon {
+        width: 25px;
+        height: 25px;
+        background-image: url('{{ url_for('static', filename='images/magnifying-glass-solid.svg') }}');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+        cursor: pointer;
+        padding: 5px 5px;
+    }
+
+    .search-icon:hover {
+        padding: 10px 10px;
+        filter: invert(0);
+        background-color: rgb(84, 121, 255);
+        border-radius: 8px;
+        transition: all 0.3
+    }
+
+    .search-icon:active {
+        opacity: 0.7;
+    }
+
+    .search-icon:hover {
+        filter: invert(0);
+        background-color: rgb(84, 121, 255);
+        border-radius: 8px;
+    }
+
+    .search-icon:active {
+        opacity: 0.7;
+    }
+
+    .recommendation-div, .syllabus-div {
+        width: 100%;
+        height: 300px;
+    }
+
+    .films {
+        width: 100%;
+        height: 230px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .film-poster {
+        width: 120px;
+        height: 180px;
+        margin-left: 15px;
+        margin-top: 10px;
+        background-image: url('static/images/movie-poster.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        transition: all 0.3 ease;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .film-poster:hover {
+        border: 2px solid rgb(84, 121, 255);
+    }
+
+    .your-recs {
+        font-size: 22px;
+        padding: 0 0;
+        margin-left: 10px;
+    }
+
+    .swiper {
+        width: 1000px;
+        height: 280px;
+    }
+
+    .swiper-slide {
+        background:rgb(27, 29, 36);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        color: white;
+        margin-top: 15px;
+    }
+
+    .overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 130px;
+        margin-left: 5px;
+        padding: 10px;
+        height: 30px;
+        width: 90px;
+        background-color: rgba(36, 38, 66, 0.7);
+        color: white;
+        border-radius: 5px;
+        font-size: clamp(0.3rem, 2.5vw, 0.8rem);
+        opacity: 0;
+        transform: translateY(6px);
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .films a {
+        text-decoration: none;
+    }
+
+    .film-poster:hover .overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .color-block { z-index: 1000; }
+    .navigation-div { z-index: 1001; }
+    .main-content, .wrapper, .nav-wrapper, .rating { z-index: 1; }
+
+
+
+    
+
+
+  </style>
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <div class="background"> <!-- grey-blue gradient bg -->
+        <div class="color-block"></div> 
+        <nav class="navigation-div"> <!-- navigation bar containing links and icons-->
+            <div class="nav-wrapper">
+                <div class="logo"></div>
+                <a class='active'>Home</a>
+                <a href='/profile'>Profile</a>
+                <a href="/classpage">Class</a>
+                <a href="/watchlist">Watchlist</a>
+                <div class="profile-icon"></div>
+                <a href="/search">
+                    <div class="search-icon"></div>
+                 </a>
+            </div>
+        </nav>   
+
+        <div class="wrapper">
+
+        <div class="welcome-div"> <!-- contains welcome and profile logo -->
+                <img class="profile" src="static/images/profile-icon.png" alt="profile-icon"> 
+                {% if session.username %}
+                    <p class="welcome">Welcome <span style="color: rgb(84,121,255); font-weight: 700;">{{session.username}}</p>
+                {% endif %}
+        </div>
+
+        <!-- Slider main container -->
+        <div class="swiper">
+        <!-- Additional required wrapper -->
+        <p class="your-recs"><span style="color: rgb(255, 255, 255); font-weight: 700;">Your Recommendations</p>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+            <div class="films">
+                {% for movie in movies[0:7] %}
+                <a href="/moviepage/{{ movie.id }}">
+                    <div class="film-poster" style="background-image: url({{movie.poster_path}}); background-size: cover;">
+                    <div class="overlay">
+                        <h4>{{ movie.title }} ({{ movie.release_year }})</h4>
+                    </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            </div>
+            <div class="swiper-slide">
+            <div class="films">
+                {% for movie in movies[7:15] %}
+                <a href="/moviepage/{{ movie.id }}">
+                    <div class="film-poster" style="background-image: url({{movie.poster_path}}); background-size: cover;">
+                    <div class="overlay">
+                        <h4>{{ movie.title }} ({{ movie.release_year }})</h4>
+                    </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        </div>
+        <!-- Slider main container -->
+        <div class="swiper">
+        <!-- Additional required wrapper -->
+        <p class="your-recs"><span style="color: rgb(255, 255, 255); font-weight: 700;">Films to Study</p>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="films">
+            <a href="/moviepage/598">
+                <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//k7eYdWvhYQyRQoU2TB2A2Xu2TfD.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>City of God (2002)</h4>
+                    </div>
+                </div>
+            </a>
+            <a href="/moviepage/580175">
+                 <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//fsn4cjpCvWuP9wU9hcFnK7M8RZC.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Another Round (2020)</h4>
+                    </div>
+                </div>
+            </a>
+            <a href="/moviepage/331781">
+                 <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//qL0RepWSNUuZoeDXfyhqowVYhrn.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Amy (2015)</h4>
+                    </div>
+                </div>
+            </a>
+            <a href="/moviepage/631">
+                 <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//oj8ZW8jKXBSs8F1e5iWsTUeXSJW.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Sunrise: A Song of Two Humans (1927)</h4>
+                    </div>
+                </div>
+            </a>
+            <a href="/moviepage/77">
+                 <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Memento (2000)</h4>
+                    </div>
+                </div>
+            </a>
+            <a href="/moviepage/426">
+                 <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//15uOEfqBNTVtDUT7hGBVCka0rZz.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Vertigo (1958)</h4>
+                    </div>
+                </div>
+            </a>
+            <a href="/moviepage/510">
+                 <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//3jcbDmRFiQ83drXNOvRDeKHxS0C.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>One Flew Over The Cuckoo's Nest (1975)</h4>
+                    </div>
+                </div>
+            </a>
+            </div>
+            </div>
+            <div class="swiper-slide">
+            <div class="films">
+                <a href="/moviepage/475557">
+                <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Joker (2019)</h4>
+                    </div>
+                </div>
+                </a>
+                <a href="/moviepage/334533">
+                <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//2sFME73GaD8UsUxPUKe60cPdLif.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Captain Fantastic (2016)</h4>
+                    </div>
+                </div>
+                </a>
+                <a href="/moviepage/747">
+                <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//dgXPhzNJH8HFTBjXPB177yNx6RI.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Shaun of the Dead (2004)</h4>
+                    </div>
+                </div>
+                </a>
+                <a href="/moviepage/627">
+                <div class="film-poster" style="background-image: url('https://image.tmdb.org/t/p/w500//bhY62Dw8iW54DIhxPQerbuB9DOP.jpg'); background-size: cover;">
+                    <div class="overlay">
+                        <h4>Trainspotting (1996)</h4>
+                    </div>
+                </div>
+                 </a>
+    
+            </div>
+            </div>
+            ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        </div>
+        </div>
+    </div>
+
+<script>
+    const swiper = new Swiper('.swiper', {
+  // Optional parameters
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+</script>
+
+</body>
+</html>
+
+
+

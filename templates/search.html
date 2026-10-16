@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/345d4d2f08.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script type="text/javascript" src="static/search.js"></script>
+  <title>Login Page</title>
+
+  <style>
+    body {
+        margin: 0;
+        height: 100%;
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+        color: white;
+        background-image: url('static/images/background.png');
+        background-size: cover;
+        background-attachment: fixed; 
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        gap: 1.3rem;
+        width: 1000px;
+        position: relative;
+
+    }
+
+    .navigation-div {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 106px;
+        background-color: transparent;
+        position: sticky;
+        z-index: 1000;
+        top: 0;
+    }
+
+    .color-block {
+        height: 115px;
+        width: 100%;
+        background-color: #16162b;
+        z-index: 5;
+        position: fixed;
+    }
+
+    .navigation-div a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+        font-size: 15px;
+        margin-top: 30px;
+        margin-left: 40px;
+        height: 20px;
+    }
+
+    .navigation-div a:hover {
+        background-color: rgba(84,121,255, 0.3);
+        border-radius: 7px;
+    }
+
+    .navigation-div a:active {
+        opacity: 0.7;
+    }
+
+
+    .logo {
+        width: 70px;
+        height: 75px;
+        padding: 10px 10px;
+        background-image: url('static/images/asfc-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+     .profile-icon {
+        width: 60px;
+        height: 60px;
+        margin-top: 10px;
+        margin-left: 200px;
+        padding: 10px 10px;
+        background-image: url('static/images/profile-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+        cursor: pointer;
+    }
+
+    .profile-icon:hover {
+        filter: invert(0%);
+        background-color: rgb(84, 121, 255);
+        border-radius: 10px;
+    }
+
+    .profile-icon:active {
+        opacity: 0.7;
+    }
+
+    .search-icon {
+        width: 10px;
+        height: 10px;
+        margin-left: 40px;
+        margin-top: 30px;
+        padding: 10px 10px;
+        background-image: url('static/images/magnifying-glass-solid.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+        cursor: pointer;
+    }
+
+    .search-icon:hover {
+        filter: invert(0);
+        background-color: rgb(84, 121, 255);
+        border-radius: 8px;
+    }
+
+    .search-icon:active {
+        opacity: 0.7;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: row;
+        width: 1000px;
+        height: 800px;
+        gap: 1.5rem;
+    }
+
+    .search-box {
+        padding: 10px 10px;
+        width: 750px;
+        height: 80px;
+        background-color: #0f111c;
+        border-radius: 15px;
+        margin-top: 30px;
+    }
+
+    .film-results {
+        position: absolute;      
+        width: 580px;            
+        background-color: #0f111c;
+    }
+
+    .film-results ul {
+        margin: 0;
+        padding: 0;
+        border-top: none;
+    }
+
+    .film-results ul li.film-result {
+        list-style: none;
+        border-radius: 3px;
+        padding: 10px 10px;
+        cursor: pointer;
+        width: 750px;             
+        border-top: 2px solid rgba(84,121,255, 0.2);
+        background-color: #0f111c;
+    }
+
+    .film-results ul li.film-result:hover {
+        background-color: rgb(84,121,255);
+    }
+
+    #input-box {
+        flex: 1;
+        height: 30px;
+        border: 2px solid transparent;
+        width: 700px;
+        padding: 10px 15px;
+        outline: 0;
+        font-size: 17px;
+        background-color: transparent;
+        color: white;
+        border: 2px solid rgba(84,121,255, 0.3);
+        border-radius: 10px;
+    }
+
+   .search-icon2 {
+        width: 10px;
+        height: 10px;
+        margin-top: 10px;
+        padding: 10px 10px;
+        background-image: url('static/images/magnifying-glass-solid.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+   }
+
+   .row {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 20px;
+        gap: 2rem;
+    }
+
+    .search-div {
+        width: 800px;
+        height: 700px;
+    }
+
+    .selected {
+        height: 700px;
+        width: 150px;
+        margin-top: 30px;
+    }
+
+    .movie-poster {
+        padding: 5px 5px;
+        width: 130px;
+        height: 195px;
+        background-image: url('static/images/movie-poster.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .movie-poster:hover {
+        border: 3px solid rgb(84, 121, 255);
+        border-radius: 5px;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+    <div class="background"> <!-- grey-blue gradient bg -->
+        <div class="wrapper"> <!-- wrapper that allows white space on sides -->
+        <nav class="navigation-div"> <!-- navigation bar containing links and icons-->
+            <div class="logo"></div>
+            <a href="/homepage">Home</a>
+            <a class='active'>Profile</a>
+            <a href="/classpage">Class</a>
+            <a href="/watchlist">Watchlist</a>
+            <div class="profile-icon"></div>
+            <div class="search-icon"></div>
+        </nav>   
+        <div class="color-block"></div> 
+
+        <div class='main-content'>
+            <div class="search-div"> <!-- involves the area for searching films -->
+                    <div class="search-box">
+                        <div class="row"> <!-- aligns the search bar and add button -->
+                            <input type="text" id="input-box" placeholder="Search for a film..." autocomplete="off">
+                            <div class="search-icon2"></div>
+                        </div>
+                    </div>
+                    <div class="film-results"> <!-- unordered list for film suggestions -->
+                            <ul> 
+                            </ul>
+                     </div>
+                </div>
+            <div class="selected">
+                <p><span style="font-weight: 700;">Selected film:</span></p>
+                <a id="movie-link" href="/moviepage/">
+                    <div class="movie-poster"></div>
+                </a>
+                <p><span style="font-size: 10px">Click poster to go to movie page</span></p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+

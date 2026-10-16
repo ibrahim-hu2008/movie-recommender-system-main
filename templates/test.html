@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Movies</title></head>
+<body>
+  <h1>Movie List</h1>
+  <ul>
+    {% for movie in movies %}
+      <li>{{ movie[1] }}</li> <!-- assuming column 1 is the title -->
+    {% endfor %}
+  </ul>
+</body>
+</html>

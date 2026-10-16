@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/345d4d2f08.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <title>Login Page</title>
+
+  <style>
+
+   body {
+        margin: 0;
+        height: 100%;
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+        color: white;
+        background-image: url('{{ url_for('static', filename='images/background.png') }}');
+        background-size: cover;
+        background-attachment: fixed; 
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 1000px;
+        padding-top: 140px;
+    }
+
+    .nav-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .navigation-div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 106px;
+        background-color: transparent;
+        position: fixed;  /* changed from sticky */
+        z-index: 1001; /* slightly higher than the color block */
+    }
+
+
+    .color-block {
+        height: 115px;
+        width: 100%;
+        background-color: #16162b;
+        position: fixed;
+    }
+
+
+    .navigation-div a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-left: 40px;
+        height: 20px;
+        transition: all 0.2s;
+        z-index: 1002;
+    }
+
+    .navigation-div a:hover {
+        background-color: rgba(84,121,255, 0.3);
+        border-radius: 7px;
+    }
+
+    .navigation-div a:active {
+        opacity: 0.7;
+    }
+
+    .welcome-div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 80px;
+        padding-bottom: 10px;
+    }
+
+    .welcome {
+        font-size: 28px;
+        color: white;
+        margin-left: 10px;
+        margin-top: 17px;
+        padding: 0;
+    }
+
+    .logged {
+        font-size: 21px;
+        color: white;
+        margin-left: 150px;
+        margin-top: 17px;
+        padding: 0;
+    }
+
+    .profile {
+        width: 70px;
+        height: 70px;
+        filter: invert(100%);
+    }
+
+    .logo {
+        width: 70px;
+        height: 75px;
+        padding: 10px 10px;
+        background-image: url('static/images/asfc-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+     .profile-icon {
+        width: 60px;
+        height: 60px;
+        margin-top: 10px;
+        margin-left: 200px;
+        padding: 10px 10px;
+        background-image: url('static/images/profile-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+        cursor: pointer;
+    }
+
+    .profile-icon:hover {
+        filter: invert(0%);
+        background-color: rgb(84, 121, 255);
+        border-radius: 10px;
+    }
+
+    .profile-icon:active {
+        opacity: 0.7;
+    }
+
+    .search-icon {
+        width: 10px;
+        height: 10px;
+        margin-left: 40px;
+        margin-top: 30px;
+        padding: 10px 10px;
+        background-image: url('static/images/magnifying-glass-solid.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+        cursor: pointer;
+    }
+
+    .search-icon:hover {
+        filter: invert(0);
+        background-color: rgb(84, 121, 255);
+        border-radius: 8px;
+    }
+
+    .search-icon:active {
+        opacity: 0.7;
+    }
+
+    .logged-films {
+        width: 40%;
+        height: 60px;
+        margin: 0 0 300px 400px;
+    }
+
+    #profile-section {
+        height: 100%;
+        width: 900px;
+        margin-left: auto;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+    }
+
+    #reviews-section {
+        height: 100%;
+        width: 900px;
+    }
+
+    .mini-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100px;
+        height: 300px;
+        margin-right: auto;
+        border-radius: 10px;
+        padding: 10px;
+        background-color:#202237;
+    }
+
+    .mini-nav a{
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+        font-size: 15px;
+        height: 20px;
+    }
+
+    .mini-nav a:hover {
+        background-color: rgba(84,121,255, 0.3);
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    .mini-nav a:active {
+        opacity: 0.7;
+    }
+
+
+    .main {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 600px;
+        gap: 2rem;
+    }
+
+   .fave-films {
+        display: flex;
+        flex-direction: row;
+        width: 400px;
+        height: 200px;
+        gap: 1rem;
+        align-items: center;
+
+   }
+
+   .recently-reviewed {
+        display: flex;
+        flex-direction: row;
+        width: 300px;
+        height: 200px;
+        gap: 1rem;
+        align-items: center;
+
+   }
+
+   .film {
+        height: 170px;
+        width: 120px;
+        border: 2px solid rgba(84, 121, 255, 0.3);
+   }
+
+   
+   .button {
+        height: 25px;
+        width: 45px;
+        color: white;
+        border-style: solid;
+        border-color: rgb(84,121,255);
+        background-color: rgb(84,121,255);
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        margin-top: 15px;
+        margin-left: 250px;
+   }
+
+   .button2 {
+        height: 50px;
+        width: 80px;
+        color: white;
+        border-style: solid;
+        border-color: rgb(84,121,255);
+        background-color: rgb(84,121,255);
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        margin: 20px 0px 0px 5px;
+   }
+
+   .row {
+        display: flex;
+        flex-direction: row;
+   }
+
+   .ratings {
+        width: 400px;
+        height: 20px;
+        margin-top: 5px;
+        border: 2px solid white;
+        display: flex;
+        flex-direction: row;
+   }
+
+   .overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 130px;
+        margin-left: 5px;
+        padding: 10px;
+        height: 30px;
+        width: 90px;
+        background-color: rgba(36, 38, 66, 0.7);
+        color: white;
+        border-radius: 5px;
+        font-size: clamp(0.3rem, 2.5vw, 0.8rem);
+        opacity: 0;
+        transform: translateY(6px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .film:hover .overlay {
+        border: 2px solid rgb(84, 121, 255);
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .square {
+        padding: 10px 10px;
+    }
+
+    .rating i {
+        color: rgb(84, 121, 255);
+        margin: 0;              
+        padding: 0; 
+        margin-top: 10px;             
+    }
+
+    .main p {
+        white-space: nowrap;
+    }
+
+    .poster-star {
+        margin-top: 25px;
+    }
+
+    .color-block { z-index: 1000; }
+    .navigation-div { z-index: 1001; }
+    .main-content, .wrapper, .nav-wrapper, .rating { z-index: 1; }
+
+  </style>
+</head>
+
+<body>
+
+    <div class="background"> <!-- grey-blue gradient bg -->
+        <div class="color-block"></div> 
+        <nav class="navigation-div"> <!-- navigation bar containing links and icons-->
+            <div class="nav-wrapper">
+                <div class="logo"></div>
+                <a href="/homepage">Home</a>
+                <a class='active'>Profile</a>
+                <a href="/classpage">Class</a>
+                <a href="/watchlist">Watchlist</a>
+                <div class="profile-icon"></div>
+                <a href="/search">
+                 <div class="search-icon"></div>
+                </a>
+            </div>
+        </nav>   
+
+        <div class="wrapper"> <!-- wrapper that allows white space on sides -->
+
+                <div class="welcome-div"> <!-- contains welcome and profile logo -->
+                    <img class="profile" src="static/images/profile-icon.png" alt="profile-icon"> 
+                    {% if session.username %}
+                        <p class="welcome"><span style="color: rgb(84,121,255); font-weight: 700;">{{session.username}}</p>
+                    {% endif %}
+                    <div class="logged-films">
+                        <p class="logged">You have logged <span style="color: rgb(84,121,255); font-weight: 700;">{{review_count}}</span> films</p>
+                    </div>
+                </div>
+
+            <div class="main">
+                <div class="mini-nav">
+                    <a>Profile</a>
+                    <a href="/activity">Activity</a>
+                    <a href="/scores">Scores</a>
+                    <a href="/reviews">Reviews</a>
+                    <a href="/details">Details</a>
+                    <a href="/logout"><button class="button2">Log Out</button></a>
+                </div>
+                <div id="profile-section" class="tab active-tab">
+                    <div class="square">
+                        <div class="row">
+                            <p>Favourite Films:</p>
+                            <button class="button">Edit</button>
+                        </div>
+                        <div class="fave-films">
+                            {% for movie in favourites %}
+                            <a href="/moviepage/{{ movie.id }}">
+                                <div class="film" style="background-image: url({{movie.poster_path}}); background-size: cover;">
+                                <div class="overlay">
+                                    <h4>{{ movie.title }} ({{ movie.release_year }})</h4>
+                                </div>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="square">
+                         <div class="row">
+                            <p>Recent Activity:</p>
+                            <button class="button">All</button>
+                        </div>
+                        <div class="recently-reviewed">
+                            {% for movie in recent_reviews %}
+                            <div class="poster-star">
+                                <a href="/moviepage/{{ movie.id }}">
+                                    <div class="film" style="background-image: url({{movie.poster_path}}); background-size: cover;">
+                                    <div class="overlay">
+                                        <h4>{{ movie.title }} ({{ movie.release_year }})</h4>
+                                    </div>
+                                    </div>
+                                </a>
+
+                                <div class="rating">
+                                {% for i in range (1,6) %}
+                                        {% if movie.rating >= i %}
+                                            <i class="fa-solid fa-star"></i>
+                                        {% elif movie.rating >= i - 0.5 %}
+                                            <i class="fa-solid fa-star-half-stroke"></i>
+                                        {% endif %}
+                                {% endfor %}
+                                </div>
+
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<script>
+    document.getElementById('logout-btn').addEventListener('click', () => {
+        window.location.href = '/logout';
+    });
+</script>
+
+</body>
+</html>
+
+
+

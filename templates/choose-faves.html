@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/345d4d2f08.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="static/autocomplete.js"></script>
+  <title>Login Page</title>
+
+  <style>
+    body {
+        margin: 0;
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+        color: white;
+    }
+
+    .background {
+        background-image: url('static/images/background.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 10px;
+        width: 1000px;
+        position: relative;
+
+    }
+
+    .navigation-div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 140px;
+        background-color: transparent;
+        position: sticky;
+        top: 0;
+    }
+
+    .navigation-div a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+        font-size: 15px;
+        margin-top: 30px;
+        margin-left: 40px;
+        height: 20px;
+    }
+
+    .navigation-div a:hover {
+        background-color: rgba(84,121,255, 0.3);
+    }
+
+    .navigation-div a:active {
+        opacity: 0.7;
+    }
+
+    .welcome-div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 80px;
+        margin-top: 30px;
+    }
+
+    .instruction {
+        width: 100%;
+        height: 100px;
+    }
+
+    .main-content {
+        width: 100%;
+        height: 700px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .search-div {
+        width: 100%;
+    }
+
+    .picked-div {
+        width: 60%;
+    }
+
+    .welcome {
+        font-size: 28px;
+        color: white;
+        margin-left: 10px;
+        margin-top: 17px;
+        padding: 0;
+    }
+
+    .instruction-heading {
+        font-size: 28px;
+        font-weight: 700;
+        color: white;
+        margin: 0 0 4px 10px;
+        padding: 0;
+    }
+
+    .instruction-txt {
+        font-size: 14px;
+        color: white;
+        margin: 0 0 0 10px;
+        padding: 0;
+    }
+
+    .profile {
+        width: 70px;
+        height: 70px;
+        filter: invert(100%);
+    }
+
+    .picked-films {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .film-poster {
+        width: 100px;
+        height: 150px;
+        border: 3px solid black;
+    }
+    
+    .search-box {
+        width: 580px;
+        height: 120px;
+        background-color: #0f111c;
+        border-radius: 5px;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    #input-box {
+        flex: 1;
+        height: 40px;
+        border: 2px solid rgb(84,121,255);
+        padding: 10px 15px;
+        outline: 0;
+        font-size: 17px;
+        background-color: transparent;
+        color: white;
+    }
+    
+    button {
+        background: transparent; 
+        border: 0;
+        outline: 0;
+    }
+
+    button .fa-solid {
+        width: 25px;
+        color: rgb(84,121,255);
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    button .fa-solid:hover {
+        background-color: rgba(246, 246, 246, 0.3);
+    }
+
+    button .fa-solid:active {
+        opacity: 0.7;
+    }
+
+    .film-results {
+        position: absolute;      
+        width: 580px;            
+        background-color: #0f111c;
+    }
+
+    .film-results ul {
+        margin: 0;
+        padding: 0;
+        border-top: none;
+    }
+
+    .film-results ul li.film-result {
+        list-style: none;
+        border-radius: 3px;
+        padding: 10px 10px;
+        cursor: pointer;
+        width: 555px;             
+        border-top: 2px solid rgba(84,121,255, 0.2);
+        background-color: #0f111c;
+    }
+
+    .film-results ul li.film-result:hover {
+        background-color: rgb(84,121,255);
+    }
+
+    #submit-btn {
+        height: 30px;
+        width: 80px;
+        color: white;
+        border-style: solid;
+        border-color: rgb(84,121,255);
+        background-color: rgb(84,121,255);
+        font-size: 15px;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        padding: 10px;
+        margin-top: 25px;
+    }
+
+    #submit-btn:hover {
+        background-color: rgb(44, 88, 248);
+    }
+
+    #submit-btn:active {
+        opacity: 0.7;
+    }
+
+    .logo {
+        width: 70px;
+        height: 75px;
+        padding: 10px 10px;
+        background-image: url('static/images/asfc-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+     .profile-icon {
+        width: 60px;
+        height: 60px;
+        margin-top: 10px;
+        margin-left: 200px;
+        padding: 10px 10px;
+        background-image: url('static/images/profile-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%)
+    }
+
+    .search-icon {
+        width: 10px;
+        height: 10px;
+        margin-left: 40px;
+        margin-top: 30px;
+        padding: 10px 10px;
+        background-image: url('static/images/magnifying-glass-solid.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%)
+    }
+  </style>
+</head>
+
+<body>
+    <div class="background"> <!-- grey-blue gradient bg -->
+        <div class="wrapper"> <!-- wrapper that allows white space on sides -->
+        <nav class="navigation-div"> <!-- navigation bar containing links and icons-->
+            <div class="logo"></div>
+            <a class="active" href="#home">Home</a>
+            <a href="#news">Profile</a>
+            <a>Class</a>
+            <a href="#about">Watchlist</a>
+            <div class="profile-icon"></div>
+            <div class="search-icon"></div>
+        </nav>    
+            <div class="welcome-div"> <!-- contains welcome and profile logo -->
+                <img class="profile" src="static/images/profile-icon.png" alt="profile-icon"> 
+                {% if session.username %}
+                    <p class="welcome">Welcome <span style="color: rgb(84,121,255); font-weight: 700;">{{session.username}}</p>
+                {% endif %}
+            </div>
+            <div class="instruction"> <!-- contains instruction for the user -->
+                <p class="instruction-heading">Choose your three favourite films</p>
+                <p class="instruction-txt">It will help us find films you like</p>
+            </div>
+            <div class="main-content"> 
+                <div class="search-div"> <!-- involves the area for searching films -->
+                    <div class="search-box">
+                        <div class="row"> <!-- aligns the search bar and add button -->
+                            <input type="text" id="input-box" placeholder="Search for a film..." autocomplete="off">
+                            <button id = 'addbutton'><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <div class="film-results"> <!-- unordered list for film suggestions -->
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="picked-div"> <!-- show picked film posters and submit btn-->
+                    <p><span style="font-weight: 700;">Picked films:</p>
+                    <div class="picked-films">
+                        <div class="film-poster"></div>
+                        <div class="film-poster"></div>
+                        <div class="film-poster"></div>
+                    </div>
+                    <a href="/homepage" id="submit-btn" style="display:none;">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

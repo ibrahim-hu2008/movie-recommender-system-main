@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+
+  <title>Login Page</title>
+
+  <style>
+    body {
+        margin: 0;
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+        color: white;
+    }
+
+    .background {
+        background-image: url('static/images/collage.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        margin: 0;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 10px;
+    }
+
+    .centre-container {
+        background-color: rgba(11, 13, 21, 0.85);
+        width: 900px;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .logo {
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+        display: inline-block;
+        background-image: url('static/images/asfc-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        left: 20px;
+    }
+
+    .sign-in-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .sign-in-div {
+        width: 550px;
+        height: 425px;
+        margin-left: 220px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .welcome-div {
+        width: 490px;
+        height: 70px;
+        margin-left: 30px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .welcome-div-2 {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: left;
+    }
+
+    .profile-logo {
+        width: 50px;
+        height: 50px;
+        margin-left: 425px;
+        margin-bottom: 4px;
+        position: absolute;
+
+    }
+
+    .username-form label, .password-form label {
+        color: white;
+        font-size: 20px;
+    }
+
+    .username-form input, .password-form input {
+        width: 450px;
+        height: 25px;
+        font-family: 'Nunito', sans-serif;
+        font-size: 16px;
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        transition: border 0.2s;
+        padding: 3px;
+    }
+
+     .username-form:focus, .password-form:focus {
+        border-color: #5479ff;
+        box-shadow: 0 0 8px #5479ff88; 
+    }
+
+
+    .sign-in-button {
+        width: 300px;
+    }
+
+    .welcome {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .instruction {
+        font-size: 16px;
+        margin-bottom: 500px;
+        margin: 0;
+    }
+
+      .sign-in-button {
+        height: 40px;
+        width: 460px;
+        color: white;
+        border-style: solid;
+        border-color: rgb(84,121,255);
+        background-color: rgb(84,121,255);
+        border-radius: 3px;
+        font-size: 20px;
+        text-decoration: none;
+        font-weight: 700;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        text-align: center;
+        transition: background-color 0.2s;
+        line-height: 2;
+    }
+
+    .sign-in-button:hover {
+        background-color: rgb(44, 88, 248);
+    }
+
+    .sign-in-button:active {
+        opacity: 0.7;
+    }
+
+    .profile-logo {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        margin-right: 50px;
+        background-image: url('static/images/profile-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+    }
+
+    .back-button {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-style: solid;
+        border-color: rgb(84,121,255);
+        background-color: rgb(84,121,255);
+        border-radius: 3px;
+        margin: 0;
+        cursor: pointer;
+        align-self: flex-start;
+        left: 20px;
+        background-image: url('static/images/arrow.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .back-button:hover {
+        background-color: rgb(44, 88, 248);
+    }
+
+    .back-button:active {
+        opacity: 0.7;
+    }
+
+    .role-text {
+        position: absolute;
+        align-self: flex-start;
+        width: 100px;
+        height: 25px;
+        margin-top: 350px;
+        margin-left: 15px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+  </style>
+</head>
+
+
+<body>
+    <div class="background">
+        <div class="wrapper">
+            <div class="centre-container">
+                <div class="logo">
+                </div>
+                <div class="sign-in-wrapper">
+                <a href="/" class="back-button"></a>
+                <div class="role-text"><p><span style="color: rgb(84,121,255); font-weight: 700; font-size: 20px;">Teacher</p></div>
+                    <div class="sign-in-div">
+                        <div class="welcome-div">
+                            <div class="welcome-div-2"> 
+                                <p class="welcome">Welcome</p>
+                                <p class="instruction">Sign in to your account</p>
+                            </div>
+                            <div class="profile-logo"> </div>
+                        </div>
+                         <div class="welcome-div">
+                            <form class="username-form">
+                                    <label for="username">Username:</label><br>
+                                    <input type="text" id="username" name="username"><br>
+                            </form>
+                        </div>
+                        <div class="welcome-div">
+                            <form class="password-form">
+                                    <label for="password">Password:</label><br>
+                                    <input type="password" id="password" name="password"><br>
+                            </form>
+                        </div>
+                        <div class="welcome-div">
+                            <a class="sign-in-button">Sign In</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

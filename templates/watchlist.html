@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/345d4d2f08.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <title>Login Page</title>
+
+  <style>
+    body {
+        margin: 0;
+        height: 100%;
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+        color: white;
+        background-image: url('static/images/background.png');
+        background-size: cover;
+        background-attachment: fixed; 
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        gap: 1.3rem;
+        width: 1000px;
+        position: relative;
+
+    }
+
+    .navigation-div {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 106px;
+        background-color: transparent;
+        position: sticky;
+        z-index: 1000;
+        top: 0;
+        justify-content: left;
+        align-items: left;
+    }
+
+    .color-block {
+        height: 115px;
+        width: 100%;
+        background-color: #16162b;
+        z-index: 5;
+        position: fixed;
+    }
+
+    .navigation-div a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        text-decoration: none;
+        font-size: 15px;
+        margin-top: 40px;
+        margin-left: 40px;
+        height: 20px;
+    }
+
+    .navigation-div a:hover {
+        background-color: rgba(84,121,255, 0.3);
+        border-radius: 7px;
+    }
+
+    .navigation-div a:active {
+        opacity: 0.7;
+        padding: 10px 10px;
+    }
+
+
+    .logo {
+        width: 70px;
+        height: 75px;
+        padding: 10px 10px;
+        background-image: url('static/images/asfc-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+     .profile-icon {
+        width: 60px;
+        height: 60px;
+        margin-top: 10px;
+        margin-left: 270px;
+        padding: 10px 10px;
+        background-image: url('static/images/profile-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+        cursor: pointer;
+    }
+
+    .profile-icon:hover {
+        filter: invert(0%);
+        background-color: rgb(84, 121, 255);
+        border-radius: 10px;
+    }
+
+    .profile-icon:active {
+        opacity: 0.7;
+    }
+
+    .search-icon {
+        width: 25px;
+        height: 25px;
+        background-image: url('static/images/magnifying-glass-solid.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+        cursor: pointer;
+        padding: 5px 5px;
+    }
+
+    .search-icon:hover {
+        padding: 10px 10px;
+        filter: invert(0);
+        background-color: rgb(84, 121, 255);
+        border-radius: 8px;
+        transition: all 0.3
+    }
+
+    .search-icon:active {
+        opacity: 0.7;
+    }
+
+    .welcome-div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 80px;
+    }
+
+    .welcome {
+        font-size: 28px;
+        color: white;
+        margin-left: 10px;
+        margin-top: 17px;
+        padding: 0;
+    }
+
+    .profile {
+        width: 70px;
+        height: 70px;
+        filter: invert(100%);
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        width: 1000px;
+        height: 800px;
+        gap: 2rem;
+    }
+
+    .film-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 12px;
+        overflow: hidden;
+    }
+
+    .poster {
+        width: 100px;
+        height: 150px;
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 130px;
+        margin-left: 5px;
+        padding: 10px;
+        height: 30px;
+        width: 90px;
+        background-color: rgba(36, 38, 66, 0.7);
+        color: white;
+        border-radius: 5px;
+        font-size: clamp(0.3rem, 2.5vw, 0.8rem);
+        opacity: 0;
+        transform: translateY(6px);
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .films a {
+        text-decoration: none;
+    }
+
+    .film-poster:hover .overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .poster:hover {
+        border: 3px solid rgb(84, 121, 255);
+        border-radius: 5px;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+    <div class="background"> <!-- grey-blue gradient bg -->
+        <div class="wrapper"> <!-- wrapper that allows white space on sides -->
+        <nav class="navigation-div"> <!-- navigation bar containing links and icons-->
+            <div class="logo"></div>
+            <a href="/homepage">Home</a>
+            <a class="/profile">Profile</a>
+            <a href="/classpage">Class</a>
+            <a href="#about">Watchlist</a>
+            <div class="profile-icon"></div>
+            <a href="/search">
+                 <div class="search-icon"></div>
+            </a>
+        </nav>   
+        <div class="color-block"></div> 
+        <div class="welcome-div"> <!-- contains welcome and profile logo -->
+                <img class="profile" src="static/images/bookmark-icon.png" alt="profile-icon"> 
+                <p class="welcome"><span style="color: rgb(84,121,255); font-weight: 700;">Your Watchlist</p>
+        </div>
+
+        <div class="main-content">
+            <div class="film-grid">
+                {% for movie in watchlist %}
+                <a href="/moviepage/{{ movie.id }}">
+                    <div class="poster" style="background-image: url({{movie.poster_path}}); background-size: cover;"></div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+
